@@ -1,0 +1,32 @@
+{
+  "changelogDate": "20230901150924",
+  "clientRootFolder": "np-core",
+  "databaseType": "sql",
+  "entityTableName": "lecturer",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "shortEmail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "workdayId",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "np-core",
+  "microservicePath": "/Users/josephbagnes/np-proj-lms/np-core",
+  "name": "Lecturer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "no"
+}

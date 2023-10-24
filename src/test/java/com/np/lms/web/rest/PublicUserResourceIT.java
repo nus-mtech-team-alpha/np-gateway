@@ -3,7 +3,6 @@ package com.np.lms.web.rest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.np.lms.IntegrationTest;
-import com.np.lms.config.Constants;
 import com.np.lms.domain.User;
 import com.np.lms.repository.EntityManager;
 import com.np.lms.repository.UserRepository;

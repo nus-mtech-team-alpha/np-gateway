@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-module-heading" data-cy="ModuleCreateUpdateHeading" jhiTranslate="npGatewayApp.npCoreModule.home.createOrEditLabel">
+        Create or edit a Module
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreModule.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreModule.acronym" for="field_acronym">Acronym</label>
+          <input type="text" class="form-control" name="acronym" id="field_acronym" data-cy="acronym" formControlName="acronym" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreModule.npalId" for="field_npalId">Npal Id</label>
+          <input type="text" class="form-control" name="npalId" id="field_npalId" data-cy="npalId" formControlName="npalId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreModule.npalCatalog" for="field_npalCatalog">Npal Catalog</label>
+          <input
+            type="text"
+            class="form-control"
+            name="npalCatalog"
+            id="field_npalCatalog"
+            data-cy="npalCatalog"
+            formControlName="npalCatalog"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreModule.semester" for="field_semester">Semester</label>
+          <input type="text" class="form-control" name="semester" id="field_semester" data-cy="semester" formControlName="semester" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

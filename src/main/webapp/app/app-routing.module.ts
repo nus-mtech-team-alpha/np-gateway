@@ -18,7 +18,7 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
         {
           path: '',
           component: HomeComponent,
-          title: 'Welcome, Java Hipster!',
+          title: 'Home | NP Gateway',
         },
         {
           path: '',

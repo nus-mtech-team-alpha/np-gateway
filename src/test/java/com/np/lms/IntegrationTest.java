@@ -1,6 +1,5 @@
 package com.np.lms;
 
-import com.np.lms.NpGatewayApp;
 import com.np.lms.config.AsyncSyncConfiguration;
 import com.np.lms.config.EmbeddedSQL;
 import java.lang.annotation.ElementType;

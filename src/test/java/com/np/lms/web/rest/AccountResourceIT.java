@@ -12,7 +12,6 @@ import com.np.lms.security.AuthoritiesConstants;
 import com.np.lms.service.UserService;
 import com.np.lms.service.dto.AdminUserDTO;
 import com.np.lms.service.dto.PasswordChangeDTO;
-import com.np.lms.service.dto.UserDTO;
 import com.np.lms.web.rest.vm.KeyAndPasswordVM;
 import com.np.lms.web.rest.vm.ManagedUserVM;
 import java.time.Instant;

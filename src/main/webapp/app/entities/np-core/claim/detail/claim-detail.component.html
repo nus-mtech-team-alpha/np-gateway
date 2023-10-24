@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="claim">
+      <h2 data-cy="claimDetailsHeading"><span jhiTranslate="npGatewayApp.npCoreClaim.detail.title">Claim</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ claim.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="npGatewayApp.npCoreClaim.dateFiled">Date Filed</span></dt>
+        <dd>
+          <span>{{ claim.dateFiled | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="npGatewayApp.npCoreClaim.status">Status</span></dt>
+        <dd>
+          <span>{{ claim.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="npGatewayApp.npCoreClaim.claimType">Claim Type</span></dt>
+        <dd>
+          <span>{{ claim.claimType }}</span>
+        </dd>
+        <dt><span jhiTranslate="npGatewayApp.npCoreClaim.hours">Hours</span></dt>
+        <dd>
+          <span>{{ claim.hours }}</span>
+        </dd>
+        <dt><span jhiTranslate="npGatewayApp.npCoreClaim.lecturer">Lecturer</span></dt>
+        <dd>
+          <div *ngIf="claim.lecturer">
+            <a [routerLink]="['/lecturer', claim.lecturer.id, 'view']">{{ claim.lecturer.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="npGatewayApp.npCoreClaim.module">Module</span></dt>
+        <dd>
+          <div *ngIf="claim.module">
+            <a [routerLink]="['/module', claim.module.id, 'view']">{{ claim.module.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/claim', claim.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

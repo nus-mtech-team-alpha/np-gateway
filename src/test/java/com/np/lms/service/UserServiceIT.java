@@ -6,7 +6,6 @@ import com.np.lms.IntegrationTest;
 import com.np.lms.config.Constants;
 import com.np.lms.domain.User;
 import com.np.lms.repository.UserRepository;
-import com.np.lms.service.dto.AdminUserDTO;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -17,7 +16,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import tech.jhipster.security.RandomUtil;
 
 /**

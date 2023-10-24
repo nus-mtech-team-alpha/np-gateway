@@ -1,0 +1,119 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-claim-heading" data-cy="ClaimCreateUpdateHeading" jhiTranslate="npGatewayApp.npCoreClaim.home.createOrEditLabel">
+        Create or edit a Claim
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreClaim.dateFiled" for="field_dateFiled">Date Filed</label>
+          <div class="input-group">
+            <input
+              id="field_dateFiled"
+              data-cy="dateFiled"
+              type="text"
+              class="form-control"
+              name="dateFiled"
+              ngbDatepicker
+              #dateFiledDp="ngbDatepicker"
+              formControlName="dateFiled"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateFiledDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreClaim.claimType" for="field_claimType">Claim Type</label>
+          <select
+            class="form-control"
+            id="field_claimType"
+            data-cy="claimType"
+            name="claimType"
+            formControlName="claimType"
+          >
+            <option [ngValue]="null"></option>
+            <option value="TIMETABLE">Timetable</option>
+            <option value="MODULE_LEADER">Module Leader</option>
+            <option value="MAKE_UP">Make Up</option>
+            <option value="OAL">OAL</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreClaim.hours" for="field_hours">Hours</label>
+          <input type="number" class="form-control" name="hours" id="field_hours" data-cy="hours" formControlName="hours" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreClaim.lecturer" for="field_lecturer">Lecturer</label>
+          <select
+            class="form-control"
+            id="field_lecturer"
+            data-cy="lecturer"
+            name="lecturer"
+            formControlName="lecturer"
+            [compareWith]="compareLecturer"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="lecturerOption" *ngFor="let lecturerOption of lecturersSharedCollection">{{ lecturerOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreClaim.module" for="field_module">Module</label>
+          <select
+            class="form-control"
+            id="field_module"
+            data-cy="module"
+            name="module"
+            formControlName="module"
+            [compareWith]="compareModule"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="moduleOption" *ngFor="let moduleOption of modulesSharedCollection">{{ moduleOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="npGatewayApp.npCoreClaim.status" for="field_status">Status</label>
+          <select
+            class="form-control"
+            id="field_status"
+            data-cy="status"
+            name="status"
+            formControlName="status"
+          >
+            <option [ngValue]="null"></option>
+            <option value="Approved">Approved</option>
+            <option value="Pending">Pending</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

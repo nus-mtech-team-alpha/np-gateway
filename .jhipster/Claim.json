@@ -1,0 +1,47 @@
+{
+  "changelogDate": "20231024072428",
+  "clientRootFolder": "np-core",
+  "databaseType": "sql",
+  "entityTableName": "claim",
+  "fields": [
+    {
+      "fieldName": "dateFiled",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "claimType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hours",
+      "fieldType": "Integer"
+    }
+  ],
+  "microserviceName": "np-core",
+  "microservicePath": "/Users/josephbagnes/np-proj-lms/np-core",
+  "name": "Claim",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "lecturer",
+      "relationshipName": "lecturer",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "module",
+      "relationshipName": "module",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "no"
+}

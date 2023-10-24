@@ -1,0 +1,121 @@
+<div>
+  <h2 id="page-heading" data-cy="ClaimHeading">
+    <span jhiTranslate="npGatewayApp.npCoreClaim.home.title">Claims</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="npGatewayApp.npCoreClaim.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-claim"
+        [routerLink]="['/claim/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="npGatewayApp.npCoreClaim.home.createLabel"> Create a new Claim </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="claims?.length === 0">
+    <span jhiTranslate="npGatewayApp.npCoreClaim.home.notFound">No Claims found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="claims && claims.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateFiled">
+            <div class="d-flex">
+              <span jhiTranslate="npGatewayApp.npCoreClaim.dateFiled">Date Filed</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="claimType">
+            <div class="d-flex">
+              <span jhiTranslate="npGatewayApp.npCoreClaim.claimType">Claim Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="hours">
+            <div class="d-flex">
+              <span jhiTranslate="npGatewayApp.npCoreClaim.hours">Hours</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lecturer.name">
+            <div class="d-flex">
+              <span jhiTranslate="npGatewayApp.npCoreClaim.lecturer">Lecturer</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="module.name">
+            <div class="d-flex">
+              <span jhiTranslate="npGatewayApp.npCoreClaim.module">Module</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span jhiTranslate="npGatewayApp.npCoreClaim.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let claim of claims; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/claim', claim.id, 'view']">{{ claim.id }}</a>
+          </td>
+          <td>{{ claim.dateFiled | formatMediumDate }}</td>
+          <td>{{ claim.claimType }}</td>
+          <td>{{ claim.hours }}</td>
+          <td>
+            <div *ngIf="claim.lecturer">
+              <a [routerLink]="['/lecturer', claim.lecturer.id, 'view']">{{ claim.lecturer.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="claim.module">
+              <a [routerLink]="['/module', claim.module.id, 'view']">{{ claim.module.name }}</a>
+            </div>
+          </td>
+          <td>{{ claim.status }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/claim', claim.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/claim', claim.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(claim)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

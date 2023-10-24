@@ -1,0 +1,36 @@
+{
+  "changelogDate": "20230901153204",
+  "clientRootFolder": "np-core",
+  "databaseType": "sql",
+  "entityTableName": "module",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "acronym",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "npalId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "npalCatalog",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "semester",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "np-core",
+  "microservicePath": "/Users/josephbagnes/np-proj-lms/np-core",
+  "name": "Module",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "no"
+}
