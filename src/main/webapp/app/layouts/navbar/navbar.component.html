@@ -79,6 +79,18 @@
                 <span>Claim</span>
               </a>
             </li>
+            <li>
+              <a class="dropdown-item" href="/static/upload_files.html" target="_blank" id="upload-menu">
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span>Upload Timesheet</span>
+              </a> 
+            </li>
+            <li>
+              <a class="dropdown-item" href="/static/login-test.html" target="_blank" id="login-test-menu">
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span>Test Login</span>
+              </a> 
+            </li>
             <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
           </ul>
         </li>
@@ -89,8 +101,8 @@
           display="dynamic"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu" data-cy="adminMenu">
+        > 
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu" data-cy="adminMenu">
             <span>
               <fa-icon icon="users-cog"></fa-icon>
               <span>Administration</span>
