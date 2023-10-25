@@ -8,7 +8,7 @@ export interface IClaim {
   status?: string | null;
   claimType?: string | null;
   hours?: number | null;
-  lecturer?: Pick<ILecturer, 'id' | 'name'> | null;
+  lecturer?: Pick<ILecturer, 'id' | 'name' | 'workdayId'> | null;
   module?: Pick<IModule, 'id' | 'name'> | null;
 }
 
