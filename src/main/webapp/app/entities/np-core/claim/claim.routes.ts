@@ -6,6 +6,7 @@ import { ClaimDetailComponent } from './detail/claim-detail.component';
 import { ClaimUpdateComponent } from './update/claim-update.component';
 import ClaimResolve from './route/claim-routing-resolve.service';
 import { ASC } from 'app/config/navigation.constants';
+import { SummaryComponent } from './summary/summary.component';
 
 const claimRoute: Routes = [
   {
@@ -13,6 +14,17 @@ const claimRoute: Routes = [
     component: ClaimComponent,
     data: {
       defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'summary',
+    component: SummaryComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    resolve: {
+      claim: ClaimResolve,
     },
     canActivate: [UserRouteAccessService],
   },

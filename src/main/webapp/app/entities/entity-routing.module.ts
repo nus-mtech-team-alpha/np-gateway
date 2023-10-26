@@ -19,6 +19,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'Claims' },
         loadChildren: () => import('./np-core/claim/claim.routes'),
       },
+      {
+        path: 'claim/summary',
+        data: { pageTitle: 'Claims Summary' },
+        loadChildren: () => import('./np-core/claim/claim.routes'),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

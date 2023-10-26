@@ -80,6 +80,18 @@
               </a>
             </li>
             <li>
+              <a
+                class="dropdown-item"
+                routerLink="/claim/summary"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span>Claims Summary</span>
+              </a>
+            </li>
+            <li>
               <a class="dropdown-item" href="/static/upload_files.html" target="_blank" id="upload-menu">
                 <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
                 <span>Upload Timesheet</span>

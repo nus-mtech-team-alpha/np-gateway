@@ -1,0 +1,44 @@
+<div>
+    <h2 id="page-heading" data-cy="ClaimHeading">
+        <span jhiTranslate="npGatewayApp.npCoreClaim.home.title">Claims Summary <{{monthYear}}></span>
+    </h2>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="claims?.length === 0">
+        <span jhiTranslate="npGatewayApp.npCoreClaim.home.notFound">No Claims found</span>
+    </div>
+
+    <div *ngFor="let summ of summary">
+        <br>
+        <h4><strong>{{summ.label}} Claims</strong></h4>
+        <div class="table-responsive table-entities" id="entities" *ngIf="summ.values && summ.values.length > 0">
+        <table class="table table-dark" aria-describedby="page-heading">
+            <thead>
+            <tr>
+                <th scope="col">
+                <div class="d-flex">
+                    <span>Program</span>
+                </div>
+                </th>
+                <th scope="col">
+                <div class="d-flex">
+                    <span>Total Hours</span>
+                </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cs of summ.values">
+                <td *ngIf="cs.cellType=='programName'" class="row-orange">{{ cs.program }}</td>
+                <td *ngIf="cs.cellType=='lecturerName'" class="row-light">&nbsp;-&nbsp;{{ cs.program }}</td>
+                <td *ngIf="cs.cellType=='programName'" class="row-orange">{{ cs.totalHours }}</td>
+                <td *ngIf="cs.cellType=='lecturerName'" class="row-light">{{ cs.totalHours }}</td>
+            </tr>
+            <tr>
+                <td><b>Grand Total</b></td>
+                <td><b>{{ sum(summ.values) }}</b></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
